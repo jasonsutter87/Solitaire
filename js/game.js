@@ -1,11 +1,59 @@
-// New Game
-//  => Generates a standard deck of cards ( 1-13, (C, S, H, D))
+var Deck = function(){
+	this.deck = []	
+	for(var i = 0; i < 4; i++){
+		for(var j = 0; j < 13; j++){
+			if(i == 0){
+				this.deck.push("D"+(j + 1).toString())
+			}
+			else if(i == 1){
+				this.deck.push("S"+(j + 1).toString())
+			}
+			else if(i == 2){
+				this.deck.push("H"+(j + 1).toString())
+			}
+			else{
+				this.deck.push("C"+(j + 1).toString())
+			}
+		}
+	}
 
-//reset game
-//  => new game, shuffle deck, then deal
+	function shuffle(array) {
+	  var currentIndex = array.length, temporaryValue, randomIndex;
 
-//Shuffle Deck
-//  => randomizes the 65 cards
+	  // While there remain elements to shuffle...
+	  while (0 !== currentIndex) {
+
+	    // Pick a remaining element...
+	    randomIndex = Math.floor(Math.random() * currentIndex);
+	    currentIndex -= 1;
+
+	    // And swap it with the current element.
+	    temporaryValue = array[currentIndex];
+	    array[currentIndex] = array[randomIndex];
+	    array[randomIndex] = temporaryValue;
+	  }
+
+	  console.log(array)
+	  return array;
+	}
+	shuffle(this.deck)
+}
+deck = new Deck()
+
+
+
+
+
+
+// var Game = function(){
+// 	this.deck = Deck.shuffle()
+// }
+
+
+
+// Game.prototype.dealNewGame = function(){}
+// Game.prototype.dealCards = function(dealNum){}
+// Game.prototype
 
 //Set up game (Initial deal)
 //  => places cards 7 sets (1-7)
