@@ -32,28 +32,66 @@ var Deck = function(){
 	    array[currentIndex] = array[randomIndex];
 	    array[randomIndex] = temporaryValue;
 	  }
-
-	  console.log(array)
 	  return array;
 	}
 	shuffle(this.deck)
 }
+
+var Game = function(cards){
+	this.deck = cards
+	this.aces = [[],[],[],[]]
+	this.spots = [[],[],[],[],[],[],[]]
+	this.deal = [[],[]]
+	
+	//Deal Spots
+	for(var i = 0; i < 1; i++){
+		this.spots[0].push(this.deck.deck[0])
+		this.deck.deck.shift()
+	}
+	for(var i = 0; i < 2; i++){
+		this.spots[1].push(this.deck.deck[0])
+		this.deck.deck.shift()
+	}
+	for(var i = 0; i < 3; i++){
+		this.spots[2].push(this.deck.deck[0])
+		this.deck.deck.shift()
+	}
+	for(var i = 0; i < 4; i++){
+		this.spots[3].push(this.deck.deck[0])
+		this.deck.deck.shift()
+	}
+	for(var i = 0; i < 5; i++){
+		this.spots[4].push(this.deck.deck[0])
+		this.deck.deck.shift()
+	}
+	for(var i = 0; i < 6; i++){
+		this.spots[5].push(this.deck.deck[0])
+		this.deck.deck.shift()
+	}
+	for(var i = 0; i < 7; i++){
+		this.spots[6].push(this.deck.deck[0])
+		this.deck.deck.shift()
+	}
+
+	this.deal[0] = this.deck.deck
+}
+
+
+
+
+
+
+// ++++++++++++ DRIVER CODE ++++++++++++
 deck = new Deck()
+game = new Game(deck)
+// console.log(game)
 
 
 
 
 
 
-// var Game = function(){
-// 	this.deck = Deck.shuffle()
-// }
 
-
-
-// Game.prototype.dealNewGame = function(){}
-// Game.prototype.dealCards = function(dealNum){}
-// Game.prototype
 
 //Set up game (Initial deal)
 //  => places cards 7 sets (1-7)
