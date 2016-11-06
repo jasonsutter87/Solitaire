@@ -40,36 +40,46 @@ var Deck = function(){
 var Game = function(cards){
 	this.deck = cards
 	this.aces = [[],[],[],[]]
-	this.spots = [[],[],[],[],[],[],[]]
+	this.spots = [[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]]]
 	this.deal = [[],[]]
 	
 	//Deal Spots
+	this.spots[0][0].push(this.deck.deck[0])
+	this.deck.deck.shift()
+	this.spots[1][0].push(this.deck.deck[0])
+	this.deck.deck.shift()
 	for(var i = 0; i < 1; i++){
-		this.spots[0].push(this.deck.deck[0])
+		this.spots[1][1].push(this.deck.deck[0])
 		this.deck.deck.shift()
 	}
+	this.spots[2][0].push(this.deck.deck[0])
+	this.deck.deck.shift()
 	for(var i = 0; i < 2; i++){
-		this.spots[1].push(this.deck.deck[0])
+		this.spots[2][1].push(this.deck.deck[0])
 		this.deck.deck.shift()
 	}
+	this.spots[3][0].push(this.deck.deck[0])
+	this.deck.deck.shift()
 	for(var i = 0; i < 3; i++){
-		this.spots[2].push(this.deck.deck[0])
+		this.spots[3][1].push(this.deck.deck[0])
 		this.deck.deck.shift()
 	}
+	this.spots[4][0].push(this.deck.deck[0])
+	this.deck.deck.shift()
 	for(var i = 0; i < 4; i++){
-		this.spots[3].push(this.deck.deck[0])
+		this.spots[4][1].push(this.deck.deck[0])
 		this.deck.deck.shift()
 	}
+	this.spots[5][0].push(this.deck.deck[0])
+	this.deck.deck.shift()
 	for(var i = 0; i < 5; i++){
-		this.spots[4].push(this.deck.deck[0])
+		this.spots[5][1].push(this.deck.deck[0])
 		this.deck.deck.shift()
 	}
+	this.spots[6][0].push(this.deck.deck[0])
+	this.deck.deck.shift()
 	for(var i = 0; i < 6; i++){
-		this.spots[5].push(this.deck.deck[0])
-		this.deck.deck.shift()
-	}
-	for(var i = 0; i < 7; i++){
-		this.spots[6].push(this.deck.deck[0])
+		this.spots[6][1].push(this.deck.deck[0])
 		this.deck.deck.shift()
 	}
 
@@ -173,6 +183,24 @@ Game.prototype.canPlaced = function(cardA, cardB){
 		console.log("NOT A VALID MOVE")
 		return false
 	}
+	//Returns either true or false
+}
+
+Game.prototype.cardDeal = function(num){
+	
+	var hand = []
+	while(hand.length <= num - 1){
+		hand.push(game.deal[0][0])
+		game.deal[0].shift()
+	}
+	// console.log(hand)
+	console.log(hand[num - 1])
+	
+
+}
+
+Game.prototype.renderBoard = function(){
+	console.log(game.spots)
 }
 
 
@@ -181,35 +209,7 @@ Game.prototype.canPlaced = function(cardA, cardB){
 deck = new Deck()
 game = new Game(deck)
 
-
-game.canPlaced("H13", "D2")
-
-
-
-
-
-
-
-
-//Set up game (Initial deal)
-//  => places cards 7 sets (1-7)
-//  => rest card place in turn deal group.
-
-//Deal hand (turn deal)
-//  => Deal 3
-//  => Deal 1
-
-
-//Last played card
-//  => Was the last card played (in the spot, empty, Red or Black?)
-
-
-
-
-//game over
-
-//place card in pile
-
-//move groups of card from one pile to another [ array1, => array3, or array1-card2-4, => array3 ]
+game.cardDeal(3)
+game.renderBoard()
 
 
