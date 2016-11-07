@@ -135,7 +135,11 @@ Game.prototype.moveCards = function(fromX, fromY, newSpotIndex) {
 	console.log(this.spots)
 }
 
+
+
 Game.prototype.canPlaced = function(cardA, cardB, column){
+//TODO: Use the column attr
+
 	var playerPos = column - 1
 	var topCard = cardA
 	var placingCard = cardB
@@ -161,7 +165,7 @@ Game.prototype.canPlaced = function(cardA, cardB, column){
 		return true
 	} 
 	
-	
+
 	if(suitA != suitB){
 		if(suitA == "H" && suitB != "D"){
 			if(valueA - 1 == valueB){
@@ -220,12 +224,10 @@ Game.prototype.cardDeal = function(num){
 }
 
 
-
-
-
 Game.prototype.renderBoard = function(){
 	console.log(game.spots)
 	console.log(game.aces)
+	console.log( "Discard Stack: " + game.deal[1].length+ ", "+  "Last Card: " + game.deal[1].slice(-1)[0]+ ", "+  "Deal Stack: " + game.deal[0].length)
 }
 
 
@@ -235,7 +237,12 @@ deck = new Deck()
 game = new Game(deck)
 
 // console.log(game)
-game.canPlaced('0', 'D13', 1)
+game.canPlaced('D10', 'S9', 1)
+game.renderBoard()
+game.cardDeal(3)
+game.renderBoard()
+game.cardDeal(3)
+game.renderBoard()
 game.cardDeal(3)
 game.renderBoard()
 
