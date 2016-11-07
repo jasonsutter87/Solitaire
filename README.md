@@ -1,6 +1,11 @@
 # Solitaire
 
 ## What is done?
+- New Game
+- Shuffle Deck
+- Set up game (Initial deal)
+- Deal hand (turn deal)
+- Can be place?
 
 ## What needs to be done?
 > Game logic,
@@ -10,13 +15,8 @@
 > CSS
 
 ###Game Logic
-- New Game
-- Shuffle Deck
 - Reset game
-- Set up game (Initial deal)
-- Deal hand (turn deal)
 - Last played card
-- Can be place?
 - game over
 - place card in pile
 - move groups of card from one pile to another 
