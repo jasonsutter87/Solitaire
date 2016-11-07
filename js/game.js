@@ -1,3 +1,9 @@
+
+
+
+
+
+
 var Deck = function(){
 	this.deck = []	
 	for(var i = 0; i < 4; i++){
@@ -129,7 +135,8 @@ Game.prototype.moveCards = function(fromX, fromY, newSpotIndex) {
 	console.log(this.spots)
 }
 
-Game.prototype.canPlaced = function(cardA, cardB){
+Game.prototype.canPlaced = function(cardA, cardB, column){
+	var playerPos = column - 1
 	var topCard = cardA
 	var placingCard = cardB
 
@@ -148,6 +155,13 @@ Game.prototype.canPlaced = function(cardA, cardB){
 		var valueB = placingCard.slice(-2)
 	}
 
+	//Checks for Kings in a empty location 
+	if((this.spots[playerPos][0].length == 0 && this.spots[playerPos][1].length == 0) &&  valueB  == 13 && valueA == 0 ){
+		console.log("VALID MOVE")
+		return true
+	} 
+	
+	
 	if(suitA != suitB){
 		if(suitA == "H" && suitB != "D"){
 			if(valueA - 1 == valueB){
@@ -221,7 +235,7 @@ deck = new Deck()
 game = new Game(deck)
 
 // console.log(game)
-game.canPlaced('C6', 'D5')
+game.canPlaced('0', 'D13', 1)
 game.cardDeal(3)
 game.renderBoard()
 
