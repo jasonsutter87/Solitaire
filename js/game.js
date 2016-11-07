@@ -129,10 +129,7 @@ Game.prototype.moveCards = function(fromX, fromY, newSpotIndex) {
 	console.log(this.spots)
 }
 
-
-
 Game.prototype.canPlaced = function(cardA, cardB){
-// TODO: Kings can only be placed on empty arrays
 	var topCard = cardA
 	var placingCard = cardB
 
@@ -187,20 +184,34 @@ Game.prototype.canPlaced = function(cardA, cardB){
 }
 
 Game.prototype.cardDeal = function(num){
-	
 	var hand = []
 	while(hand.length <= num - 1){
 		hand.push(game.deal[0][0])
+		this.deal[1].push(game.deal[0][0])
 		game.deal[0].shift()
 	}
-	// console.log(hand)
-	console.log(hand[num - 1])
 	
 
+	// console.log(this.deal[1].splice(this.deal[1].length - 1))
+
+
+	if(num == 3){
+		console.log("Deal " + hand[num - 1] + ' .... ' + hand[num - 2], hand[num - 3])
+	}else if(num == 2){
+		console.log("Deal " + hand[num - 1] + ' .... ' + hand[num - 2])
+	}else{
+		console.log("Deal " + hand[num - 1])
+	}
+	
 }
+
+
+
+
 
 Game.prototype.renderBoard = function(){
 	console.log(game.spots)
+	console.log(game.aces)
 }
 
 
@@ -209,6 +220,8 @@ Game.prototype.renderBoard = function(){
 deck = new Deck()
 game = new Game(deck)
 
+// console.log(game)
+game.canPlaced('C6', 'D5')
 game.cardDeal(3)
 game.renderBoard()
 
