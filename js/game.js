@@ -169,8 +169,7 @@ Game.prototype.vaildMove = function(cardA, cardB, column){
 	//Returns either true or false
 }
 
-
-
+//deal 1, 2 or 3 cards
 Game.prototype.cardDeal = function(num){
 	var hand = []
 	while(hand.length <= num - 1){
@@ -180,13 +179,12 @@ Game.prototype.cardDeal = function(num){
 	}
 }
 
-
+//renders the board
 Game.prototype.renderBoard = function(){
 	console.log(game.spots)
 	console.log(game.aces)
 	console.log( "Discard Stack: " + game.deal[1].length+ ", Current Deal Card: " + game.deal[1].slice(-1)[0]+ ", Deal Stack: " + game.deal[0].length)
 }
-
 
 //This will grab the cards value if you give it a position and a spot location. for example: (1,0)
 Game.prototype.getCardValue = function(column, spot){
@@ -194,6 +192,15 @@ Game.prototype.getCardValue = function(column, spot){
 	if(this.spots[column][spot] != undefined){
 		console.log(this.spots[column][spot][0])
 		return this.spots[column][spot][0]
+	}
+}
+
+//Checks to see if the game is over
+Game.prototype.gameOver = function(){
+	if(this.aces[0].length + this.aces[1].length + this.aces[2].length + this.aces[3].length == 52){
+		console.log("GAME OVER")
+		alert("GAME OVER")
+		return true
 	}
 }
 
