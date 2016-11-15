@@ -184,8 +184,8 @@ Game.prototype.renderBoard = function(){
 Game.prototype.getCardValue = function(column, spot){
 	//show retutn a card value "D1", "H7"
 	if(this.spots[column][spot] != undefined){
-		console.log(this.spots[column][spot])
-		return this.spots[column][spot]
+		console.log(this.spots[column][spot][0])
+		return this.spots[column][spot][0]
 	}
 }
 
