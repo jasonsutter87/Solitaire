@@ -1,3 +1,4 @@
+//Creates a new deck of cards and shuffles them
 var Deck = function(){
 	this.deck = []	
 	for(var i = 0; i < 4; i++){
@@ -37,6 +38,7 @@ var Deck = function(){
 	shuffle(this.deck)
 }
 
+//creates a new game of solitare, and deals the first hand
 var Game = function(cards){
 	this.deck = cards
 	this.aces = [[],[],[],[]]
@@ -86,24 +88,26 @@ var Game = function(cards){
 	this.deal[0] = this.deck.deck
 }
 
-Game.prototype.moveCards = function(fromX, fromY, newSpotIndex) {
-	var cardX = fromX 
-	var cardY = fromY 
-	var cardIndex = newSpotIndex
-	var tempGroup = []
+//Move card function that will grab a pile of cards and move them
+Game.prototype.moveCards = function(column, spot, newSpotIndex) {
+	//pushes cards from one array to another
+	for(var i = 0; i < this.spots[column][spot].slice(spot,52).length; i++){
+		var temp = this.spots[column][spot].slice(spot,52)[i]
+		this.spots[newSpotIndex][0].push(temp)
+	}
+	//removed old pile from array
+	for(var i = 0; i < this.spots[column][spot].slice(spot,52).length; i++){
+		var temp = this.spots[column][spot].slice(spot,52)[i]
+		var index = this.spots[column][0].indexOf(temp);
 
-
-	//Moves single card over
-	// console.log("Moving cards")
-	// this.spots[cardIndex].push(this.spots[cardX][cardY])
-	// this.spots[cardX].shift()
+		if(index != -1){
+		    this.spots[column].splice( index, 1 );
+		}
+	}
 }
 
-
-
+//Return either true or false for valid moves
 Game.prototype.vaildMove = function(cardA, cardB, column){
-//TODO: Use the column attr
-
 	var playerPos = column - 1
 	var topCard = cardA
 	var placingCard = cardB
@@ -165,6 +169,8 @@ Game.prototype.vaildMove = function(cardA, cardB, column){
 	//Returns either true or false
 }
 
+
+
 Game.prototype.cardDeal = function(num){
 	var hand = []
 	while(hand.length <= num - 1){
@@ -178,9 +184,11 @@ Game.prototype.cardDeal = function(num){
 Game.prototype.renderBoard = function(){
 	console.log(game.spots)
 	console.log(game.aces)
-	console.log( "Discard Stack: " + game.deal[1].length+ ", "+  "Last Card: " + game.deal[1].slice(-1)[0]+ ", "+  "Deal Stack: " + game.deal[0].length)
+	console.log( "Discard Stack: " + game.deal[1].length+ ", Current Deal Card: " + game.deal[1].slice(-1)[0]+ ", Deal Stack: " + game.deal[0].length)
 }
 
+
+//This will grab the cards value if you give it a position and a spot location. for example: (1,0)
 Game.prototype.getCardValue = function(column, spot){
 	//show retutn a card value "D1", "H7"
 	if(this.spots[column][spot] != undefined){
@@ -193,11 +201,9 @@ Game.prototype.getCardValue = function(column, spot){
 deck = new Deck()
 game = new Game(deck)
 
-
-// console.log(game.renderBoard())
-
-game.getCardValue(0, 0)
-
-// vaildMove = function(cardA, cardB, column)
-
+// game.renderBoard()
+// game.cardDeal(3)
+// game.renderBoard()
+// game.cardDeal(3)
+// game.renderBoard()
 
