@@ -1,9 +1,3 @@
-
-
-
-
-
-
 var Deck = function(){
 	this.deck = []	
 	for(var i = 0; i < 4; i++){
@@ -103,41 +97,11 @@ Game.prototype.moveCards = function(fromX, fromY, newSpotIndex) {
 	// console.log("Moving cards")
 	// this.spots[cardIndex].push(this.spots[cardX][cardY])
 	// this.spots[cardX].shift()
-
-
-	//Moves single card over
-	console.log("Moving cards 2.0")
-	// console.log(this.spots[cardX][cardY])
-	// console.log(this.spots[newSpotIndex])
-
-
-
-
-
-
-
-
-
-
-	//checks the cards from the one picked until the end.
-	// moved the one picked until the end into a temportory array
-	//delete the one picked item column in the array until the end.
-	//moved the first card  item column in the array until the end into the coulm picked.
-
-
-
-
-	// this.spots[cardIndex].push(this.spots[cardX][cardY])
-	// this.spots[cardX].shift()
-
-	
-	
-	console.log(this.spots)
 }
 
 
 
-Game.prototype.canPlaced = function(cardA, cardB, column){
+Game.prototype.vaildMove = function(cardA, cardB, column){
 //TODO: Use the column attr
 
 	var playerPos = column - 1
@@ -208,19 +172,6 @@ Game.prototype.cardDeal = function(num){
 		this.deal[1].push(game.deal[0][0])
 		game.deal[0].shift()
 	}
-	
-
-	// console.log(this.deal[1].splice(this.deal[1].length - 1))
-
-
-	if(num == 3){
-		console.log("Deal " + hand[num - 1] + ' .... ' + hand[num - 2], hand[num - 3])
-	}else if(num == 2){
-		console.log("Deal " + hand[num - 1] + ' .... ' + hand[num - 2])
-	}else{
-		console.log("Deal " + hand[num - 1])
-	}
-	
 }
 
 
@@ -230,20 +181,23 @@ Game.prototype.renderBoard = function(){
 	console.log( "Discard Stack: " + game.deal[1].length+ ", "+  "Last Card: " + game.deal[1].slice(-1)[0]+ ", "+  "Deal Stack: " + game.deal[0].length)
 }
 
+Game.prototype.getCardValue = function(column, spot){
+	//show retutn a card value "D1", "H7"
+	if(this.spots[column][spot] != undefined){
+		console.log(this.spots[column][spot])
+		return this.spots[column][spot]
+	}
+}
 
 
-// ++++++++++++ DRIVER CODE ++++++++++++
 deck = new Deck()
 game = new Game(deck)
 
-// console.log(game)
-game.canPlaced('D10', 'S9', 1)
-game.renderBoard()
-game.cardDeal(3)
-game.renderBoard()
-game.cardDeal(3)
-game.renderBoard()
-game.cardDeal(3)
-game.renderBoard()
+
+// console.log(game.renderBoard())
+
+game.getCardValue(0, 0)
+
+// vaildMove = function(cardA, cardB, column)
 
 
