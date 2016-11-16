@@ -11,13 +11,13 @@ body {
   width: 150px;
   height: 200px;
   border: #111 solid;
+  display: inline-block;
 }
 
 .deal {
   border: white solid;
   width: 320px;
   height: 205px;
-  /*margin: 0px 0px 0px 0px;*/
 }
 
 .draw-pile {
@@ -34,10 +34,6 @@ body {
   max-height: 250px;
   float: right;
   margin: -213px 0px 0px 0px;
-}
-
-.mark {
-  display: inline-block;
 }
 
 .spots {
