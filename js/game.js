@@ -89,7 +89,7 @@ var Game = function(cards){
 }
 
 //Move card function that will grab a pile of cards and move them
-Game.prototype.moveCards = function(column, spot, newSpotIndex) {
+Game.prototype.moveCardsPile = function(column, spot, newSpotIndex) {
 	//pushes cards from one array to another
 	for(var i = 0; i < this.spots[column][spot].slice(spot,52).length; i++){
 		var temp = this.spots[column][spot].slice(spot,52)[i]
@@ -105,6 +105,12 @@ Game.prototype.moveCards = function(column, spot, newSpotIndex) {
 		}
 	}
 }
+
+//Move a card from the current deal card into a new spot ----> TODO
+Game.prototype.moveCardDeal = function(newSpotIndex){}
+
+// Move a card from an ace pile into a new spot ----> TODO
+Game.prototype.moveCardAces = function(aceSpot, newSpotIndex){}
 
 //Return either true or false for valid moves
 Game.prototype.vaildMove = function(cardA, cardB, column){
