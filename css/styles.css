@@ -16,16 +16,8 @@ body {
 
 .deal {
   border: white solid;
-  width: 320px;
+  width: 317px;
   height: 205px;
-}
-
-.draw-pile {
-  float: left;
-}
-
-.discard-pile {
-  float: right;
 }
 
 .aces {
