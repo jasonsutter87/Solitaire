@@ -1,0 +1,36 @@
+body {
+  background-color: #056c70;
+}
+
+.board {
+  width: 1400px;
+}
+
+.mark {
+  background-color: #424444;
+  width: 150px;
+  height: 200px;
+  border: #111 solid;
+  display: inline-block;
+}
+
+.deal {
+  border: white solid;
+  width: 317px;
+  height: 205px;
+}
+
+.aces {
+  border: green solid;
+  width: 636px;
+  max-height: 250px;
+  float: right;
+  margin: -213px 0px 0px 0px;
+}
+
+.spots {
+  float: right;
+  padding-top: 25px;
+}
+
+
