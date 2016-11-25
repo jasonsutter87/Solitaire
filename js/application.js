@@ -3,33 +3,24 @@ $(document).ready(function() {
   //create a new game
   deck = new Deck()
   game = new Game(deck)
-  // startBoard()
-  //until the game over return true, loop
-  // while(game.gameOver() == false){
-  	//listen for mouse clicks
-  	listeners()
-  	//check if gameover equals true
-  	// game.gameOver()
-  // }
+  renderBoard()
+ 
+	//listen for mouse clicks
+	listeners()
+  
 });
 
-// function startBoard(){
+function renderBoard(){
   var elements = document.getElementsByClassName('spot');
-//  	console.log(elements)
+ 	elements[0].innerHTML = game.spots[0][0]
+ 	elements[1].innerHTML = game.spots[1][0]
+ 	elements[2].innerHTML = game.spots[2][0]
+ 	elements[3].innerHTML = game.spots[3][0]
+ 	elements[4].innerHTML = game.spots[4][0]
+ 	elements[5].innerHTML = game.spots[5][0]
+ 	elements[6].innerHTML = game.spots[6][0]
 
-//   // for(i=0;i<elements.length; i++){
-//   //      if(game.board[i] == 0){
-//   //         $(elements[i]).css('background-color', 'tan')  
-//   //         $(elements[i]).append('<h1 style="color: tan;">' + game.board[i]+ '</h1>')
-//   //      }else if(game.board[i] == 2){
-//   //         $(elements[i]).css('background-color', 'green')
-//   //         $(elements[i]).append('<h1 style="color: white;">' + game.board[i]+ '</h1>')
-//   //      }else{
-//   //         $(elements[i]).css('background-color', 'blue')
-//   //         $(elements[i]).append('<h1 style="color: white;">' + game.board[i]+ '</h1>')
-//   //      }
-//   // }
-// }
+}
 
 //mouse click listerns
 function listeners(){
