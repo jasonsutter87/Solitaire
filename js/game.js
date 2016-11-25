@@ -213,10 +213,3 @@ Game.prototype.gameOver = function(){
 
 deck = new Deck()
 game = new Game(deck)
-
-// game.renderBoard()
-// game.cardDeal(3)
-// game.renderBoard()
-// game.cardDeal(3)
-// game.renderBoard()
-
