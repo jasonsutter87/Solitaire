@@ -4,6 +4,9 @@ $(document).ready(function() {
 
   deck = new Deck()
   game = new Game(deck)
+
+ 	// console.log(game.spots[6][1]);
+
   renderBoard()
 
 	//listen for mouse clicks
@@ -13,6 +16,7 @@ $(document).ready(function() {
 
 function renderBoard(){
   var elements = document.getElementsByClassName('spot');
+  //Adding images to element
   elements[0].innerHTML = ("<img class='value' id='"+game.spots[0][0]+"' src='../images/"+game.spots[0][0]+"'>").toString()
  	elements[1].innerHTML = ("<img class='value' id='"+game.spots[1][0]+"' src='../images/"+game.spots[1][0]+"'>").toString()
  	elements[2].innerHTML = ("<img class='value' id='"+game.spots[2][0]+"' src='../images/"+game.spots[2][0]+"'>").toString()
@@ -21,19 +25,25 @@ function renderBoard(){
  	elements[5].innerHTML = ("<img class='value' id='"+game.spots[5][0]+"' src='../images/"+game.spots[5][0]+"'>").toString()
  	elements[6].innerHTML = ("<img class='value' id='"+game.spots[6][0]+"' src='../images/"+game.spots[6][0]+"'>").toString()
 
- 	$( ".value" ).each(function(index, value) {
- 		console.log($(this).attr('id'));
- 		if ($(this).attr('id') == "S1.png" || $(this).attr('id') == "H1.png" || $(this).attr('id') == "C1.png" || $(this).attr('id') == "D1.png"){
 
+ 	// Selecting the id to find the aces
+ 	$( ".value" ).each(function(index, value) {
+
+ 		if ($(this).attr('id') == "S1.png" || $(this).attr('id') == "H1.png" || $(this).attr('id') == "C1.png" || $(this).attr('id') == "D1.png"){
+ 			// saves the spot where the ace left
+ 			var emptySpot = $(this).parent().attr('id');
+
+ 			//  send the ace to the top
  			aces($(this), $(this).attr('id'))
+
+ 			// replace the emptySpot with the next card
+ 			elements[emptySpot.charAt(4) - 1].innerHTML = ("<img class='value' id='"+game.spots[emptySpot.charAt(4)][1][0]+"' src='../images/"+game.spots[emptySpot.charAt(4)][1][0]+"'>").toString()
  		}
 	});
 }
 
+// Check which type of ace and place on the right place
 function aces(card, id) {
-	console.log("ASS!!!");
-	console.log(card[0]);
-	console.log(id.charAt(0));
 	if (id.charAt(0) == "H") {
 		$("#hearts").empty();
 		$("#hearts").append(card);
@@ -61,20 +71,24 @@ function listeners(){
 			elements[0].innerHTML = "EMPTY"
 
 		}else if(elements[1].innerHTML != 'undefined' && elements[1].innerHTML != 'EMPTY'){
-			// elements[1].innerHTML =  game.deal[1][count + 2]
-			console.log(game.deal[1]);
-			console.log(game.deal[1][count + 2]);
-			console.log(game.deal[1][count + 1]);
-			console.log(game.deal[1][count]);
-			elements[1].innerHTML = ("<img src='../images/"+game.deal[1][count]+"'>").toString()
-			elements[2].innerHTML = ("<img src='../images/"+game.deal[1][count + 1]+"'>").toString()
-			elements[3].innerHTML = ("<img src='../images/"+game.deal[1][count + 2]+"'>").toString()
+			//Adding images to element
+			elements[1].innerHTML = ("<img class='look' id='"+game.deal[1][count]+"' src='../images/"+game.deal[1][count]+"'>").toString()
+			elements[2].innerHTML = ("<img class='look' id='"+game.deal[1][count +1]+"' src='../images/"+game.deal[1][count + 1]+"'>").toString()
+			elements[3].innerHTML = ("<img class='look' id='"+game.deal[1][count + 2]+"' src='../images/"+game.deal[1][count + 2]+"'>").toString()
+
 			if(elements[1].innerHTML == 'undefined'){
 				elements[1].innerHTML = game.deal[1][game.deal[0].length]
 			}
 		}else{
 			elements[0].innerHTML = "EMPTY"
 		}
+
+		// Selecting the id to find the aces
+		$( ".look" ).each(function(index, value) {
+ 				if ($(this).attr('id') == "S1.png" || $(this).attr('id') == "H1.png" || $(this).attr('id') == "C1.png" || $(this).attr('id') == "D1.png"){
+ 				aces($(this), $(this).attr('id'))
+ 				}
+			});
 })
 
 	//on mouse down on deal card, either move the card to a loction or aces
