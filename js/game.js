@@ -4,16 +4,16 @@ var Deck = function(){
 	for(var i = 0; i < 4; i++){
 		for(var j = 0; j < 13; j++){
 			if(i == 0){
-				this.deck.push("D"+(j + 1).toString())
+				this.deck.push("D"+(j + 1).toString()+".png")
 			}
 			else if(i == 1){
 				this.deck.push("S"+(j + 1).toString()+".png")
 			}
 			else if(i == 2){
-				this.deck.push("H"+(j + 1).toString())
+				this.deck.push("H"+(j + 1).toString()+".png")
 			}
 			else{
-				this.deck.push("C"+(j + 1).toString())
+				this.deck.push("C"+(j + 1).toString()+".png")
 			}
 		}
 	}
