@@ -15,6 +15,8 @@ $(document).ready(function() {
 
   renderBoard()
 
+	drag()
+
 	//listen for mouse clicks
 	listeners()
 
@@ -23,13 +25,13 @@ $(document).ready(function() {
 function renderBoard(){
   var elements = document.getElementsByClassName('spot');
   //Adding images to element
-  elements[0].innerHTML = ("<img class='value' id='"+game.spots[0][0]+"' src='../images/"+game.spots[0][0]+"'>").toString()
- 	elements[1].innerHTML = ("<img class='value' id='"+game.spots[1][0]+"' src='../images/"+game.spots[1][0]+"'>").toString()
- 	elements[2].innerHTML = ("<img class='value' id='"+game.spots[2][0]+"' src='../images/"+game.spots[2][0]+"'>").toString()
- 	elements[3].innerHTML = ("<img class='value' id='"+game.spots[3][0]+"' src='../images/"+game.spots[3][0]+"'>").toString()
- 	elements[4].innerHTML = ("<img class='value' id='"+game.spots[4][0]+"' src='../images/"+game.spots[4][0]+"'>").toString()
- 	elements[5].innerHTML = ("<img class='value' id='"+game.spots[5][0]+"' src='../images/"+game.spots[5][0]+"'>").toString()
- 	elements[6].innerHTML = ("<img class='value' id='"+game.spots[6][0]+"' src='../images/"+game.spots[6][0]+"'>").toString()
+  elements[0].innerHTML = ("<img class='draggable value' id='"+game.spots[0][0]+"' src='../images/"+game.spots[0][0]+"'>").toString()
+ 	elements[1].innerHTML = ("<img class='draggable value' id='"+game.spots[1][0]+"' src='../images/"+game.spots[1][0]+"'>").toString()
+ 	elements[2].innerHTML = ("<img class='draggable value' id='"+game.spots[2][0]+"' src='../images/"+game.spots[2][0]+"'>").toString()
+ 	elements[3].innerHTML = ("<img class='draggable value' id='"+game.spots[3][0]+"' src='../images/"+game.spots[3][0]+"'>").toString()
+ 	elements[4].innerHTML = ("<img class='draggable value' id='"+game.spots[4][0]+"' src='../images/"+game.spots[4][0]+"'>").toString()
+ 	elements[5].innerHTML = ("<img class='draggable value' id='"+game.spots[5][0]+"' src='../images/"+game.spots[5][0]+"'>").toString()
+ 	elements[6].innerHTML = ("<img class='draggable value' id='"+game.spots[6][0]+"' src='../images/"+game.spots[6][0]+"'>").toString()
 
 
  	// Selecting the id to find the aces
@@ -42,7 +44,7 @@ function renderBoard(){
  			//  send the ace to the top
  			aces($(this), $(this).attr('id'))
  			// replace the emptySpot with the next card
- 			elements[(emptySpot.charAt(4))].innerHTML = ("<img class='value' id='"+game.spots[emptySpot.charAt(4)][1]+"' src='../images/"+game.spots[emptySpot.charAt(4)][1][0]+"'>").toString()
+ 			elements[(emptySpot.charAt(4))].innerHTML = ("<img class='draggable value' id='"+game.spots[emptySpot.charAt(4)][1]+"' src='../images/"+game.spots[emptySpot.charAt(4)][1][0]+"'>").toString()
  		}
 	});
 }
@@ -64,12 +66,19 @@ function aces(card, id) {
 	}
 }
 
+	function drag() {
+		$(function() {
+    	$( ".draggable" ).draggable();
+  	});
+	}
+
+
 //mouse click listerns
 function listeners(){
   var elements = document.getElementsByClassName('mark');
 
 	//on mouse down on deal back, deal new card
-	$('.discard-pile').mousedown(function(){
+	$('.draw-pile').mousedown(function(){
 		count  = game.deal[1].length
 		game.cardDeal(3)
 		if(elements[1].innerHTML == game.deal[1][game.deal[0].length]){
@@ -77,10 +86,10 @@ function listeners(){
 
 		}else if(elements[1].innerHTML != 'undefined' && elements[1].innerHTML != 'EMPTY'){
 			//Adding images to element
-			elements[1].innerHTML = ("<img class='look' id='"+game.deal[1][count]+"' src='../images/"+game.deal[1][count]+"'>").toString()
-			elements[2].innerHTML = ("<img class='look' id='"+game.deal[1][count +1]+"' src='../images/"+game.deal[1][count + 1]+"'>").toString()
-			elements[3].innerHTML = ("<img class='look' id='"+game.deal[1][count + 2]+"' src='../images/"+game.deal[1][count + 2]+"'>").toString()
-
+			elements[1].innerHTML = ("<img class='draggable look' id='"+game.deal[1][count]+"' src='../images/"+game.deal[1][count]+"'>").toString()
+			elements[2].innerHTML = ("<img class='draggable look' id='"+game.deal[1][count +1]+"' src='../images/"+game.deal[1][count + 1]+"'>").toString()
+			elements[3].innerHTML = ("<img class='draggable look' id='"+game.deal[1][count + 2]+"' src='../images/"+game.deal[1][count + 2]+"'>").toString()
+			drag()
 			if(elements[1].innerHTML == 'undefined'){
 				elements[1].innerHTML = game.deal[1][game.deal[0].length]
 			}
@@ -91,10 +100,14 @@ function listeners(){
 		// Selecting the id to find the aces
 		$( ".look" ).each(function(index, value) {
  				if ($(this).attr('id') == "S1.png" || $(this).attr('id') == "H1.png" || $(this).attr('id') == "C1.png" || $(this).attr('id') == "D1.png"){
- 				aces($(this), $(this).attr('id'))
+ 					aces($(this), $(this).attr('id'))
  				}
 			});
 })
+
+
+
+
 
 	//on mouse down on deal card, either move the card to a loction or aces
 	$('').mousedown(function(){
