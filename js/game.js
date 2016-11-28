@@ -1,13 +1,13 @@
 //Creates a new deck of cards and shuffles them
 var Deck = function(){
-	this.deck = []	
+	this.deck = []
 	for(var i = 0; i < 4; i++){
 		for(var j = 0; j < 13; j++){
 			if(i == 0){
 				this.deck.push("D"+(j + 1).toString())
 			}
 			else if(i == 1){
-				this.deck.push("S"+(j + 1).toString())
+				this.deck.push("S"+(j + 1).toString()+".png")
 			}
 			else if(i == 2){
 				this.deck.push("H"+(j + 1).toString())
@@ -44,7 +44,7 @@ var Game = function(cards){
 	this.aces = [[],[],[],[]]
 	this.spots = [[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]]]
 	this.deal = [[],[]]
-	
+
 	//Deal Spots
 	this.spots[0][0].push(this.deck.deck[0])
 	this.deck.deck.shift()
@@ -133,12 +133,12 @@ Game.prototype.vaildMove = function(cardA, cardB, column){
 		var valueB = placingCard.slice(-2)
 	}
 
-	//Checks for Kings in a empty location 
+	//Checks for Kings in a empty location
 	if((this.spots[playerPos][0].length == 0 && this.spots[playerPos][1].length == 0) &&  valueB  == 13 && valueA == 0 ){
 		console.log("VALID MOVE")
 		return true
-	} 
-	
+	}
+
 
 	if(suitA != suitB){
 		if(suitA == "H" && suitB != "D"){
