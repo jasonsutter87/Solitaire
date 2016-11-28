@@ -38,10 +38,9 @@ function renderBoard(){
  		if ($(this).attr('id') == "S1.png" || $(this).attr('id') == "H1.png" || $(this).attr('id') == "C1.png" || $(this).attr('id') == "D1.png"){
  			// saves the spot where the ace left
  			var emptySpot = $(this).parent().attr('id');
- 			console.log(emptySpot.charAt(4))
+ 			// console.log(emptySpot.charAt(4))
  			//  send the ace to the top
  			aces($(this), $(this).attr('id'))
- 			console.log(parseInt(emptySpot.charAt(4)))
  			// replace the emptySpot with the next card
  			elements[(emptySpot.charAt(4))].innerHTML = ("<img class='value' id='"+game.spots[emptySpot.charAt(4)][1]+"' src='../images/"+game.spots[emptySpot.charAt(4)][1][0]+"'>").toString()
  		}
