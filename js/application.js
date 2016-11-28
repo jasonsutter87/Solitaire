@@ -13,13 +13,13 @@ $(document).ready(function() {
 function renderBoard(){
 	console.log(game.spots);
   var elements = document.getElementsByClassName('spot');
-  elements[0].innerHTML = ("<img src='../images/spades/"+game.spots[0][0]+"'>").toString()
- 	elements[1].innerHTML = ("<img src='../images/spades/"+game.spots[1][0]+"'>").toString()
- 	elements[2].innerHTML = ("<img src='../images/spades/"+game.spots[2][0]+"'>").toString()
- 	elements[3].innerHTML = ("<img src='../images/spades/"+game.spots[3][0]+"'>").toString()
- 	elements[4].innerHTML = ("<img src='../images/spades/"+game.spots[4][0]+"'>").toString()
- 	elements[5].innerHTML = ("<img src='../images/spades/"+game.spots[5][0]+"'>").toString()
- 	elements[6].innerHTML = ("<img src='../images/spades/"+game.spots[6][0]+"'>").toString()
+  elements[0].innerHTML = ("<img src='../images/"+game.spots[0][0]+"'>").toString()
+ 	elements[1].innerHTML = ("<img src='../images/"+game.spots[1][0]+"'>").toString()
+ 	elements[2].innerHTML = ("<img src='../images/"+game.spots[2][0]+"'>").toString()
+ 	elements[3].innerHTML = ("<img src='../images/"+game.spots[3][0]+"'>").toString()
+ 	elements[4].innerHTML = ("<img src='../images/"+game.spots[4][0]+"'>").toString()
+ 	elements[5].innerHTML = ("<img src='../images/"+game.spots[5][0]+"'>").toString()
+ 	elements[6].innerHTML = ("<img src='../images/"+game.spots[6][0]+"'>").toString()
 }
 
 //mouse click listerns
