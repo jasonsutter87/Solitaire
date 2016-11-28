@@ -1,6 +1,7 @@
 //When the document is ready
 $(document).ready(function() {
   //create a new game
+
   deck = new Deck()
   game = new Game(deck)
   renderBoard()
@@ -11,15 +12,41 @@ $(document).ready(function() {
 });
 
 function renderBoard(){
-	console.log(game.spots);
   var elements = document.getElementsByClassName('spot');
-  elements[0].innerHTML = ("<img src='../images/"+game.spots[0][0]+"'>").toString()
- 	elements[1].innerHTML = ("<img src='../images/"+game.spots[1][0]+"'>").toString()
- 	elements[2].innerHTML = ("<img src='../images/"+game.spots[2][0]+"'>").toString()
- 	elements[3].innerHTML = ("<img src='../images/"+game.spots[3][0]+"'>").toString()
- 	elements[4].innerHTML = ("<img src='../images/"+game.spots[4][0]+"'>").toString()
- 	elements[5].innerHTML = ("<img src='../images/"+game.spots[5][0]+"'>").toString()
- 	elements[6].innerHTML = ("<img src='../images/"+game.spots[6][0]+"'>").toString()
+  elements[0].innerHTML = ("<img class='value' id='"+game.spots[0][0]+"' src='../images/"+game.spots[0][0]+"'>").toString()
+ 	elements[1].innerHTML = ("<img class='value' id='"+game.spots[1][0]+"' src='../images/"+game.spots[1][0]+"'>").toString()
+ 	elements[2].innerHTML = ("<img class='value' id='"+game.spots[2][0]+"' src='../images/"+game.spots[2][0]+"'>").toString()
+ 	elements[3].innerHTML = ("<img class='value' id='"+game.spots[3][0]+"' src='../images/"+game.spots[3][0]+"'>").toString()
+ 	elements[4].innerHTML = ("<img class='value' id='"+game.spots[4][0]+"' src='../images/"+game.spots[4][0]+"'>").toString()
+ 	elements[5].innerHTML = ("<img class='value' id='"+game.spots[5][0]+"' src='../images/"+game.spots[5][0]+"'>").toString()
+ 	elements[6].innerHTML = ("<img class='value' id='"+game.spots[6][0]+"' src='../images/"+game.spots[6][0]+"'>").toString()
+
+ 	$( ".value" ).each(function(index, value) {
+ 		console.log($(this).attr('id'));
+ 		if ($(this).attr('id') == "S1.png" || $(this).attr('id') == "H1.png" || $(this).attr('id') == "C1.png" || $(this).attr('id') == "D1.png"){
+
+ 			aces($(this), $(this).attr('id'))
+ 		}
+	});
+}
+
+function aces(card, id) {
+	console.log("ASS!!!");
+	console.log(card[0]);
+	console.log(id.charAt(0));
+	if (id.charAt(0) == "H") {
+		$("#hearts").empty();
+		$("#hearts").append(card);
+	}else if (id.charAt(0) == "S") {
+		$("#spades").empty();
+		$("#spades").append(card);
+	}else if (id.charAt(0) == "C") {
+		$("#clubs").empty();
+		$("#clubs").append(card);
+	}else if (id.charAt(0) == "D") {
+		$("#diamonds").empty();
+		$("#diamonds").append(card);
+	}
 }
 
 //mouse click listerns
@@ -34,7 +61,14 @@ function listeners(){
 			elements[0].innerHTML = "EMPTY"
 
 		}else if(elements[1].innerHTML != 'undefined' && elements[1].innerHTML != 'EMPTY'){
-			elements[1].innerHTML =  game.deal[1][count + 2]
+			// elements[1].innerHTML =  game.deal[1][count + 2]
+			console.log(game.deal[1]);
+			console.log(game.deal[1][count + 2]);
+			console.log(game.deal[1][count + 1]);
+			console.log(game.deal[1][count]);
+			elements[1].innerHTML = ("<img src='../images/"+game.deal[1][count]+"'>").toString()
+			elements[2].innerHTML = ("<img src='../images/"+game.deal[1][count + 1]+"'>").toString()
+			elements[3].innerHTML = ("<img src='../images/"+game.deal[1][count + 2]+"'>").toString()
 			if(elements[1].innerHTML == 'undefined'){
 				elements[1].innerHTML = game.deal[1][game.deal[0].length]
 			}
