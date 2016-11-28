@@ -5,6 +5,10 @@
   <link rel="stylesheet" type="text/css" href="../css/styles.css">
   <script src="../js/application.js"></script>
   <script src="../js/game.js"></script>
+
+  <!-- Script to drag elements -->
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
   <title>Solitaire</title>
 </head>
 <body>
@@ -12,7 +16,7 @@
 
   <div class="board">
     <div class="deal">
-      <div class="draw-pile mark"><img src="../images/cardBack.png"></div>
+      <div class="draw-pile mark"><img id="backcard" src="../images/cardBack.png"></div>
       <div class="discard-pile mark"><img src=""></div>
       <div class="discard-pile mark"><img src=""></div>
       <div class="discard-pile mark"><img src=""></div>
@@ -32,7 +36,8 @@
       <div id="spot5" class="spot mark">Spot</div>
       <div id="spot6" class="spot mark">Spot</div>
     </div>
-  </div>
 
+  </div>
+  <h1>Drag a Card!!!</h1>
 </body>
 </html>
