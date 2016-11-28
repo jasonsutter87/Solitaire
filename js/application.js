@@ -5,7 +5,13 @@ $(document).ready(function() {
   deck = new Deck()
   game = new Game(deck)
 
- 	// console.log(game.spots[6][1]);
+ 	console.log("Spot 6 =-.-=" + game.spots[6][1]);
+ 	console.log("Spot 5 =-.-=" + game.spots[5][1]);
+ 	console.log("Spot 4 =-.-=" + game.spots[4][1]);
+ 	console.log("Spot 3 =-.-=" + game.spots[3][1]);
+ 	console.log("Spot 2 =-.-=" + game.spots[2][1]);
+ 	console.log("Spot 1 =-.-=" + game.spots[1][1]);
+ 	console.log("Spot 0 =-.-=" + game.spots[0][1]);
 
   renderBoard()
 
@@ -32,12 +38,11 @@ function renderBoard(){
  		if ($(this).attr('id') == "S1.png" || $(this).attr('id') == "H1.png" || $(this).attr('id') == "C1.png" || $(this).attr('id') == "D1.png"){
  			// saves the spot where the ace left
  			var emptySpot = $(this).parent().attr('id');
-
+ 			// console.log(emptySpot.charAt(4))
  			//  send the ace to the top
  			aces($(this), $(this).attr('id'))
-
  			// replace the emptySpot with the next card
- 			elements[emptySpot.charAt(4) - 1].innerHTML = ("<img class='value' id='"+game.spots[emptySpot.charAt(4)][1][0]+"' src='../images/"+game.spots[emptySpot.charAt(4)][1][0]+"'>").toString()
+ 			elements[(emptySpot.charAt(4))].innerHTML = ("<img class='value' id='"+game.spots[emptySpot.charAt(4)][1]+"' src='../images/"+game.spots[emptySpot.charAt(4)][1][0]+"'>").toString()
  		}
 	});
 }
